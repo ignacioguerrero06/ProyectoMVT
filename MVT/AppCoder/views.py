@@ -9,12 +9,14 @@ def familiares(request):
     familiar.save()
     familiar1=Familiares(nombre='Carlos', dni=18567298,cumpleaños='1973-07-21')
     familiar1.save()
-    familiar2=Familiares(nombre='Augusto', dni=32567432,cumpleaños='1965-12-12')
+    familiar2=Familiares(nombre='Alejandra', dni=32567432,cumpleaños='1965-12-12')
     familiar2.save()
     diccionario={'Nombre':familiar.nombre,'Dni':familiar.dni,'Cumpleaños':familiar.cumpleaños,
                 'Nombre1':familiar1.nombre,'Dni1':familiar1.dni,'Cumpleaños1':familiar1.cumpleaños,
                 'Nombre2':familiar2.nombre,'Dni2':familiar2.dni,'Cumpleaños2':familiar2.cumpleaños
                 }
-    plantilla=loader.get_template('template1.html')
-    documento=plantilla.render(diccionario)
-    return HttpResponse(documento)
+    return render(request,"template1.html",diccionario)
+
+def inicio(request):
+    return render(request,"template_inicio.html")
+    
